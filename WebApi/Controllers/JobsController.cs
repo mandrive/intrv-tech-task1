@@ -9,10 +9,12 @@ namespace WebApi.Controllers
     public class JobsController : ApiController
     {
         private readonly IRequestsXmlSerializer serializer;
+        private readonly IDirectoryService directoryService;
 
-        public JobsController(IRequestsXmlSerializer serializer)
+        public JobsController(IRequestsXmlSerializer serializer, IDirectoryService directoryService)
         {
             this.serializer = serializer;
+            this.directoryService = directoryService;
         }
 
         [HttpGet]
@@ -21,7 +23,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var destPath = System.Web.Hosting.HostingEnvironment.MapPath("~/App_Data");
+                var destPath = directoryService.MapPath("~/App_Data");
                 await serializer.SerializeDataAsync(destPath);
                 return Ok();
             }

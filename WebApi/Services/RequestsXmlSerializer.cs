@@ -14,10 +14,14 @@ namespace WebApi.Services
     public class RequestsXmlSerializer : IRequestsXmlSerializer
     {
         private readonly IDbFactory dbFactory;
+        private readonly IDirectoryService directory;
+        private readonly IFileService file;
 
-        public RequestsXmlSerializer(IDbFactory dbFactory)
+        public RequestsXmlSerializer(IDbFactory dbFactory, IDirectoryService directory, IFileService file)
         {
             this.dbFactory = dbFactory;
+            this.directory = directory;
+            this.file = file;
         }
 
         public Task SerializeDataAsync(string destFolder)
@@ -31,19 +35,19 @@ namespace WebApi.Services
                         var pathCombined = Path.Combine(destFolder, "xml");
                         var fileName = request.Date.ToString("yyyy-MM-dd") + ".xml";
 
-                        if (!Directory.Exists(pathCombined))
+                        if (!directory.Exists(pathCombined))
                         {
-                            Directory.CreateDirectory(pathCombined);
+                            directory.CreateDirectory(pathCombined);
                         }
 
                         var fullPath = Path.Combine(pathCombined, fileName);
 
-                        if (File.Exists(fullPath))
+                        if (file.Exists(fullPath))
                         {
-                            File.Delete(fullPath);
+                            file.Delete(fullPath);
                         }
 
-                        using (var stream = File.Create(fullPath))
+                        using (var stream = file.Create(fullPath))
                         {
                             var xmlModel = new XmlRequestModel
                             {

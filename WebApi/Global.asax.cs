@@ -36,6 +36,8 @@ namespace WebApi
         private void RegisterServices(ContainerBuilder builder)
         {
             builder.RegisterType<DbFactory>().As<IDbFactory>();
+            builder.RegisterType<DirectoryService>().As<IDirectoryService>();
+            builder.RegisterType<FileService>().As<IFileService>();
             builder.RegisterType<RequestsXmlSerializer>().As<IRequestsXmlSerializer>();
         }
     }

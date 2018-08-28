@@ -111,6 +111,8 @@
     <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\XmlRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DirectoryService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\RequestsXmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
