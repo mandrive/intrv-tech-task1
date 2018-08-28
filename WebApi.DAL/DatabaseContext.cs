@@ -1,9 +1,16 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using WebApi.DAL.Entities;
 
 namespace WebApi.DAL
 {
-    public class DatabaseContext : DbContext
+    public interface IDatabaseContext : IDisposable
+    {
+        DbSet<Request> Requests { get; set; }
+    }
+
+
+    public class DatabaseContext : DbContext, IDatabaseContext
     {
         public DatabaseContext() : base("name=LocalDb")
         {

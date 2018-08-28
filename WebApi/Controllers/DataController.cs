@@ -21,8 +21,6 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post([FromBody] RequestModel[] models)
         {
-            var tr = new StreamReader(Request.Content.ReadAsStreamAsync().Result);
-            var all = tr.ReadToEnd();
             try
             {
                 using (var db = dbFactory.Create())
