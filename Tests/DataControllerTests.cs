@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
-using NSubstitute;
 using WebApi.Controllers;
-using WebApi.DAL;
 using WebApi.DAL.Entities;
 using WebApi.Models;
 using Xunit;
@@ -21,6 +16,7 @@ namespace Tests.UnitTests
     {
 
         [Fact]
+        [Trait("Category", "Unit")]
         public async Task ShouldReturnStatusCodeCreated_WhenSaveToDbPasses()
         {
             //Arrange
@@ -52,6 +48,7 @@ namespace Tests.UnitTests
         }
 
         [Fact]
+        [Trait("Category", "Unit")]
         public async Task ShouldReturnStatusCodeInternalServerError_WhenExceptionOccured()
         {
             //Arrange

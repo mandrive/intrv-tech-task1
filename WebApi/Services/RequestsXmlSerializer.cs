@@ -32,15 +32,14 @@ namespace WebApi.Services
                 {
                     foreach (var request in db.Requests)
                     {
-                        var pathCombined = Path.Combine(destFolder, "xml");
                         var fileName = request.Date.ToString("yyyy-MM-dd") + ".xml";
 
-                        if (!directory.Exists(pathCombined))
+                        if (!directory.Exists(destFolder))
                         {
-                            directory.CreateDirectory(pathCombined);
+                            directory.CreateDirectory(destFolder);
                         }
 
-                        var fullPath = Path.Combine(pathCombined, fileName);
+                        var fullPath = Path.Combine(destFolder, fileName);
 
                         if (file.Exists(fullPath))
                         {

@@ -22,6 +22,7 @@ namespace Tests.UnitTests
         }
 
         [Fact]
+        [Trait("Category", "Unit")]
         public async Task ShouldReturnStatusCodeOk_WhenControllerCalled()
         {
             var mockDirectoryService = TestUtils.SetupMockDirectoryService();
@@ -40,6 +41,7 @@ namespace Tests.UnitTests
         }
 
         [Fact]
+        [Trait("Category", "Unit")]
         public async Task ShouldReturnStatusCodeInternalServerError_WhenExceptionOccured()
         {
             var mockDirectoryService = TestUtils.SetupMockDirectoryService();

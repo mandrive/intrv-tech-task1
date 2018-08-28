@@ -21,6 +21,11 @@ namespace WebApi.Controllers
         [HttpPost]
         public async Task<IHttpActionResult> Post([FromBody] RequestModel[] models)
         {
+            if (models == null || models.Length == 0)
+            {
+                return StatusCode(System.Net.HttpStatusCode.BadRequest);
+            }
+
             try
             {
                 using (var db = dbFactory.Create())

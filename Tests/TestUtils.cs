@@ -14,6 +14,7 @@ namespace Tests.UnitTests
     public class TestUtils
     {
         public static string TempPath = Path.GetTempPath();
+        public static string TempPathXmlDir = Path.Combine(TempPath, "xml");
 
         public static IDbFactory PrepareDbFactoryWithMockedRequestsSet(IList<Request> data, bool dbCreatorShouldThrowException = false)
         {
